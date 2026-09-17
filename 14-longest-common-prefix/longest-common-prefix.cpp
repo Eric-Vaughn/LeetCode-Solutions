@@ -10,21 +10,38 @@
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        
+
     }
 };
 
 */
 
-class Solution {
+class Solution
+{
 public:
-    std::string longestCommonPrefix(const std::vector<std::string>& strs) {
-        std::string commonPrefix = "";
+    std::string longestCommonPrefix(const std::vector<std::string> &strs)
+    {
+        // Sort the strings (alphabetically)
+        std::sort(strs.begin(), strs.end());
+        // Get our potentially smallest (first) and potentially largest (last) strings
         std::string first = strs[0], last = strs[strs.size() - 1];
-        
-        std::sort(strs.begin(), strs.end()); // Sort strings
+        // Variable to store our result
+        std::string commonPrefix = "";
 
+        // Go over whichever string is smallest's full length
+        for (int i = 0; i < std::min(first.size(), last.size()); i++)
+        {
+            if (first[i] != last[i])
+            {
+                // The common prefix has ended
+                return commonPrefix;
+            }
 
+            // Update common prefix
+            commonPrefix += first[i];
+        }
+
+        // No matter what, return the common prefix, even if it's and empty string
         return commonPrefix;
     }
 };
