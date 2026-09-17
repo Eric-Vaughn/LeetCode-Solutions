@@ -4,25 +4,16 @@
 
 // All code above (includes) is to get rid of errors + follow LeetCode's desired input
 
-/*
-// Given Code
-
-class Solution {
-public:
-    string longestCommonPrefix(vector<string>& strs) {
-
-    }
-};
-
-*/
-
 class Solution
 {
 public:
-    std::string longestCommonPrefix(const std::vector<std::string> &strs)
+    std::string longestCommonPrefix(std::vector<std::string> &strs)
     {
+        // Check if the vector is empty
+        if (strs.empty()) { return ""; }
+
         // Sort the strings (alphabetically)
-        std::sort(strs.begin(), strs.end());
+        std::sort(strs.begin(), strs.end()); // Input vector isn't const, so we can sort it w/ a deep copy
         // Get our potentially smallest (first) and potentially largest (last) strings
         std::string first = strs[0], last = strs[strs.size() - 1];
         // Variable to store our result
