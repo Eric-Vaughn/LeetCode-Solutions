@@ -13,7 +13,7 @@ public:
         if (strs.empty()) { return ""; }
 
         // Sort the strings (alphabetically)
-        std::sort(strs.begin(), strs.end()); // Input vector isn't const, so we can sort it w/ a deep copy
+        std::sort(strs.begin(), strs.end()); // Input vector isn't const, so we can sort it w/o a deep copy
         // Get our potentially smallest (first) and potentially largest (last) strings
         std::string first = strs[0], last = strs[strs.size() - 1];
         // Variable to store our result
@@ -32,7 +32,7 @@ public:
             commonPrefix += first[i];
         }
 
-        // No matter what, return the common prefix, even if it's and empty string
+        // No matter what, return the common prefix, even if it's an empty string
         return commonPrefix;
     }
 };
